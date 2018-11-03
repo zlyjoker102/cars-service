@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <ng-template #noCarsInfo>
+        currently no cars in service
+      </ng-template>
+      <table *ngIf="cars.length > 0; else noCarsInfo; " class="table cs-table table-striped">
+        <thead>
+          <tr>
+            <th>car</th>
+            <th>plate</th>
+            <th>delivery date</th>
+            <th>deadline</th>
+            <th>cost</th>
+            <th>actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let car of cars">
+            <td [ngClass]="{'row-error': car.isFullyDamaged}">{{car.model}}</td>
+            <td>{{car.plate}}</td>
+            <td>{{car.deliveryDate}}</td>
+            <td>{{car.deadline}}</td>
+            <td>{{car.client.firstName}} {{car.client.surName}}</td>
+            <td>{{car.cost}}</td>
+            <td>{{car.cost}}</td>
+
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <app-total-cost [totalCost]="totalCost"></app-total-cost>
+</div>
